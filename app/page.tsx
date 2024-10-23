@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { FaYoutube, FaTelegram, FaEnvelope } from "react-icons/fa";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import WordFadeIn from "@/components/ui/word-fade-in";
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
-import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
-import DarkModeToggle from "@/components/ui/dark-mode-toggle";
 import CustomCursor from "@/components/ui/custom-cursor";
+import DarkModeToggle from "@/components/ui/dark-mode-toggle";
 import InteractiveBackground from "@/components/ui/interactive-background";
+import WordFadeIn from "@/components/ui/word-fade-in";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { FaEnvelope, FaTelegram, FaYoutube } from "react-icons/fa";
 
 const links = [
   {
@@ -77,7 +76,6 @@ const profileVariants = {
 };
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -142,7 +140,7 @@ export default function Home() {
                       "text-xl sm:text-2xl font-light"
                     )}
                   >
-                    Graphic Designer & Financial Freedom Coach
+                    Digital Coach
                   </span>
                 </AnimatedGradientText>
               </motion.div>
