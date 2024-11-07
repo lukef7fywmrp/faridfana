@@ -6,7 +6,6 @@ import CustomCursor from "@/components/ui/custom-cursor";
 import DarkModeToggle from "@/components/ui/dark-mode-toggle";
 import InteractiveBackground from "@/components/ui/interactive-background";
 import WordFadeIn from "@/components/ui/word-fade-in";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { CheckCircleIcon } from "lucide-react";
