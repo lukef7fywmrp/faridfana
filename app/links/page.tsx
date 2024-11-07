@@ -9,7 +9,14 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaEnvelope, FaGlobe, FaTelegram, FaYoutube } from "react-icons/fa";
+import {
+  FaBitcoin,
+  FaEnvelope,
+  FaGlobe,
+  FaPalette,
+  FaTelegram,
+  FaYoutube,
+} from "react-icons/fa";
 import {
   Dialog,
   DialogContent,
@@ -28,6 +35,166 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { CheckCircleIcon } from "lucide-react";
+
+interface CourseFeature {
+  title: string;
+  items: string[];
+}
+
+const cryptoCourseFeatures: CourseFeature[] = [
+  {
+    title: "Course Topics",
+    items: [
+      "Crypto Trading",
+      "Crypto Analysis",
+      "Digital Asset Management",
+      "Market Analysis",
+      "Trading Strategies",
+      "Risk Management",
+    ],
+  },
+];
+
+const designCourseFeatures: CourseFeature[] = [
+  {
+    title: "Adobe Creative Suite",
+    items: [
+      "Adobe After Effects 2025",
+      "Adobe Premiere Pro 2025",
+      "Adobe Illustrator 2025",
+      "Adobe Photoshop 2025",
+    ],
+  },
+  {
+    title: "Technical Skills",
+    items: [
+      "Branding & Color Theory",
+      "Video & Audio Editing",
+      "Motion Graphics",
+      "2D & 3D Animations",
+      "Visual Effects",
+      "Social Media Graphics",
+      "Advertisement Designs",
+      "Presentation Designs",
+      "Infographics",
+      "Composition",
+      "Typography",
+    ],
+  },
+];
+
+function LiveClassesSection() {
+  return (
+    <motion.div
+      variants={itemVariants}
+      className="space-y-12"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 }}
+    >
+      <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">
+        Live Classes
+      </h2>
+
+      {/* Crypto Course Card */}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8">
+        <div className="space-y-6">
+          <div className="flex items-center space-x-4">
+            <div className="p-3 bg-indigo-100 dark:bg-indigo-900 rounded-xl">
+              <FaBitcoin className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+              Cryptocurrency Live Course
+            </h3>
+          </div>
+
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Join our comprehensive cryptocurrency course to gain hands-on
+            knowledge and master the digital asset market. Perfect for beginners
+            and intermediate traders, with interactive Q&A sessions and live
+            demos.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            {cryptoCourseFeatures.map((feature) => (
+              <div key={feature.title} className="space-y-3">
+                <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                  {feature.title}
+                </h4>
+                <ul className="space-y-2">
+                  {feature.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center space-x-2 text-gray-600 dark:text-gray-300"
+                    >
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Design Course Card */}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8">
+        <div className="space-y-6">
+          <div className="flex items-center space-x-4">
+            <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-xl">
+              <FaPalette className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+              Graphic Design Live Course
+            </h3>
+          </div>
+
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Master the latest in Graphic Design and learn how to create stunning
+            graphics and dive into Motion Graphics and Video Editing. This
+            course will open doors to earning opportunities on-site, remotely,
+            or as a freelancer.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            {designCourseFeatures.map((feature) => (
+              <div key={feature.title} className="space-y-3">
+                <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                  {feature.title}
+                </h4>
+                <ul className="space-y-2">
+                  {feature.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center space-x-2 text-gray-600 dark:text-gray-300"
+                    >
+                      <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center">
+        <Button
+          size="lg"
+          className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white"
+          onClick={() =>
+            (window.location.href = "mailto:faridfana223@gmail.com")
+          }
+        >
+          Enroll Now
+        </Button>
+      </div>
+    </motion.div>
+  );
+}
 
 const links = [
   {
@@ -212,82 +379,11 @@ export default function Links() {
                 ))}
               </motion.div>
 
-              <motion.div
-                variants={itemVariants}
-                className="text-center"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-800 dark:text-white inline-block border-b-2 border-indigo-500 pb-1">
-                  Live Classes Payment Methods
-                </h3>
-                <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8">
-                  <QRCodeCard
-                    src="/bitcoin-transfer-qr.jpg"
-                    alt="Bitcoin Transfer QR Code"
-                    title="Bitcoin Transfer"
-                    onClick={() => setSelectedQR("/bitcoin-transfer-qr.jpg")}
-                  />
-                  <QRCodeCard
-                    src="/hesabpay-transfer-qr.jpg"
-                    alt="HesabPay Transfer QR Code"
-                    title="HesabPay Transfer"
-                    onClick={() => setSelectedQR("/hesabpay-transfer-qr.jpg")}
-                  />
-                </div>
-                <div className="mt-6 text-sm text-gray-600 dark:text-gray-300 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md text-left">
-                  <h4 className="font-semibold mb-2">
-                    Important Instructions:
-                  </h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <span className="mr-2">1.</span>
-                      <span>
-                        Before enrolling, email{" "}
-                        <a
-                          href="mailto:faridfana223@gmail.com"
-                          className="font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
-                        >
-                          faridfana223@gmail.com
-                        </a>{" "}
-                        to confirm your class and time.
-                      </span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="mr-2">2.</span>
-                      <span>
-                        After payment, send the confirmation screenshots to the
-                        same email address:{" "}
-                        <a
-                          href="mailto:faridfana223@gmail.com"
-                          className="font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
-                        >
-                          faridfana223@gmail.com
-                        </a>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </motion.div>
+              <LiveClassesSection />
             </motion.div>
           </AnimatePresence>
         </main>
       </div>
-
-      {isMobile ? (
-        <QRCodeDrawer
-          isOpen={!!selectedQR}
-          onClose={() => setSelectedQR(null)}
-          src={selectedQR}
-        />
-      ) : (
-        <QRCodeModal
-          isOpen={!!selectedQR}
-          onClose={() => setSelectedQR(null)}
-          src={selectedQR}
-        />
-      )}
     </>
   );
 }
@@ -311,118 +407,5 @@ function LoadingState() {
         className="w-16 h-16 bg-indigo-600 dark:bg-indigo-400"
       />
     </div>
-  );
-}
-
-function QRCodeCard({
-  src,
-  alt,
-  title,
-  onClick,
-}: {
-  src: string;
-  alt: string;
-  title: string;
-  onClick: () => void;
-}) {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 300, damping: 10 }}
-      className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-      onClick={onClick}
-    >
-      <div className="relative w-40 h-40 mx-auto mb-3">
-        <Image
-          src={src}
-          alt={alt}
-          layout="fill"
-          objectFit="contain"
-          className="rounded-lg"
-        />
-      </div>
-      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        {title}
-      </p>
-    </motion.div>
-  );
-}
-
-function QRCodeModal({
-  isOpen,
-  onClose,
-  src,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  src: string | null;
-}) {
-  if (!src) return null;
-
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[90vw] md:max-w-[600px]">
-        <DialogHeader>
-          <DialogTitle>QR Code</DialogTitle>
-          <DialogDescription>
-            Scan the QR Code to Proceed with Your Payment
-          </DialogDescription>
-        </DialogHeader>
-        <div className="relative w-full aspect-square mt-4">
-          <Image
-            src={src}
-            alt="QR Code"
-            layout="fill"
-            objectFit="contain"
-            className="rounded-lg"
-          />
-        </div>
-        <DialogFooter>
-          <Button onClick={onClose} variant="secondary">
-            Close
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
-function QRCodeDrawer({
-  isOpen,
-  onClose,
-  src,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  src: string | null;
-}) {
-  if (!src) return null;
-
-  return (
-    <Drawer open={isOpen} onOpenChange={onClose}>
-      <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>QR Code</DrawerTitle>
-          <DrawerDescription>
-            Scan the QR Code to Proceed with Your Payment
-          </DrawerDescription>
-        </DrawerHeader>
-        <div className="relative w-full aspect-square mt-4 px-4">
-          <Image
-            src={src}
-            alt="QR Code"
-            layout="fill"
-            objectFit="contain"
-            className="rounded-lg"
-          />
-        </div>
-        <DrawerFooter>
-          <Button onClick={onClose} variant="secondary">
-            Close
-          </Button>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
   );
 }
