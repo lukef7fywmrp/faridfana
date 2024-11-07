@@ -1,12 +1,15 @@
 "use client";
 
 import AnimatedGradientText from "@/components/ui/animated-gradient-text";
+import { Button } from "@/components/ui/button";
 import CustomCursor from "@/components/ui/custom-cursor";
 import DarkModeToggle from "@/components/ui/dark-mode-toggle";
 import InteractiveBackground from "@/components/ui/interactive-background";
 import WordFadeIn from "@/components/ui/word-fade-in";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { CheckCircleIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
@@ -17,25 +20,6 @@ import {
   FaTelegram,
   FaYoutube,
 } from "react-icons/fa";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerFooter,
-} from "@/components/ui/drawer";
-import { Button } from "@/components/ui/button";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import { CheckCircleIcon } from "lucide-react";
 
 interface CourseFeature {
   title: string;
@@ -276,8 +260,6 @@ export default function Links() {
     damping: 30,
     restDelta: 0.001,
   });
-  const [selectedQR, setSelectedQR] = useState<string | null>(null);
-  const isMobile = useMediaQuery("(max-width: 640px)");
 
   useEffect(() => {
     // Simulate loading delay
